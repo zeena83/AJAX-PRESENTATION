@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AJAX</title>
+
+		<meta name="description" content="AJAX">
+		<meta name="author" content="Zeena">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="AJAX.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<img src="IMG/download.jpg" class="img-circle" alt="Cinque Terre" width="150" height="150">
+					<h1>AJAX</h1>
+					<h3>Vad är Ajax? Och hur fungerar!</h3>
+					<p>
+						<small>Presentation av <a href="#">Zeena Elia</a> and <a href="https://github.com/zeena83/AJAX-PRESENTATION">Github</a></small>
+					</p>
+				</section>
+
+			
+				<!-- Vad är Ajax? -->
+				<section>
+					<section>
+						<h2>Vad är Ajax?</h2>
+						<p>
+							<ul>
+								<li>Ajax är en förkortning som står för Asynchronous JavaScript and XML,  är ett samlingsnamn för flera olika tekniker som kan användas för att bygga applikationer.Kända tjänster som använder Ajax är Gmail, Google Maps och Facebook.</li>
+							</ul>
+						</p>
+						
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<p>
+							<ul>
+								<li>AJAX är inte ett programmeringsspråk.</li>
+								<li>Webbläsare skickar och tar emot data i bakgrunden.</li>
+								<li>Uppdatera en webbsida utan att ladda om sidan.</li>
+								<li>Läs data från en webbserver - efter att sidan har laddats.</li>
+								<li>AJAX-program kan använda XML för att transportera data, men det är lika vanligt att transportera data som vanlig text eller JSON-text.</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<p class="p1"><em>AJAX använder bara en kombination av:</em></p>
+						<p class="p1">
+							<ul>
+								<li>Ett webbläsare inbyggt XMLHttpRequest-objekt (för att begära data från en webbserver).</li>
+								<li>JavaScript och HTML DOM (för att visa eller använda data).</li>
+							</ul>
+					    </p>
+						<a href="#/2">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+				
+	
+				<!--Ajax historia-->
+				<section>
+					<section>
+						<h2>Ajax historia:</h2>
+						<p>
+							<ul>
+								<li>1999: Microsoft's Internet Explorer 5 lägger till XMLHTTP ActiveX-kontroll.</li>
+								<li>2000 -2002: Mozilla skapar standardiserad XMLHttpRequest modellerad på Microsofts gränssnitt.</li>
+							</ul>
+						</p>
+						
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section class="p1">
+						<p>
+							<li>2002-2006 XMLHttpRequest antas av alla webbläsare.</li>
+							<li>2004: Google använder XMLHttpRequest för <br> Gmail.</li>
+							<li>2004: Google använder XMLHttpRequest för Google Suggest.</li>
+							<li>2005: Google använder XMLHttpRequest för Google Maps.</li>
+							<li>200-2005 Andra webbplatser börjar använda XMLHttpRequest.</li>
+						</p>
+					</section>
+					<section>
+						<p>
+							<ul>
+								<li>"Ajax: En ny metod för webbapplikationer", Jesse James Garrett, Adaptive Path, 18 februari 2005.</li>
+								<li><a href="http://adaptivepath.org/ideas/ajax-new-approach-web-applications">http://adaptivepath.org/ideas/ajax-new-approach-web-applications</a></li>
+							</ul>
+						</p>
+
+						<br>
+						<a href="#/2">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+				
+				
+				<!-- Hur AJAX fungerar -->
+				<section>
+					<section data-background="#dddddd">
+						<h2>Hur AJAX fungerar</h2>
+						<p class="p1">
+							<ol>
+								<li>En händelse inträffar på en webbsida (sidan laddas, en knapp klickas).</li>
+								<li>Ett XMLHttpRequest-objekt skapas av JavaScript.</li>
+								<li>XMLHttpRequest-objektet skickar en begäran till en webbserver.</li>
+								<li>Servern behandlar begäran.</li>
+								<li>Servern skickar ett svar tillbaka till webbsidan.</li>
+								<li>Svaret läses av JavaScript.</li>
+								<li>Sid uppdatering utförs av JavaScript.</li>
+							</ol>
+						</p>
+
+					</section>
+					<section data-background="?">
+						<img src="IMG/pic_ajax.gif" width="1000" height="530" alt="EMG"/>
+					</section>
+			</section>
+				
+
+
+				<!-- AJAX - XMLHttpRequest - Object -->
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>XMLHttpRequest - Objekt</h2>
+					<p>
+						Alla moderna webbläsare stöder XMLHttpRequest-objektet.
+						XMLHttpRequest-objektet kan användas för att utbyta data med en web. Det betyder att det är möjligt att uppdatera delar av en webbsida utan att ladda om hela sidan.<br>
+
+						XMLHttpRequest fungerar på samma sätt som när man prenumererar på events med addEventListener. När man skickar ett request lägger man med en funktion som ska köras när serverns svar kommer.
+					</p>
+
+				</section>
+
+				
+
+				<!-- Så här skapar du ett XMLHttpRequest-objekt -->
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h3>skapa ett XMLHttpRequest-objekt</h3>
+					<p>
+						<em>Syntax för att skapa ett XMLHttpRequest-objekt:</em>
+					</p>
+					<pre><code class="hljs" style="word-wrap: break-word;">variable = new XMLHttpRequest();</code></pre>
+					<h3>Exempel:</h3>
+					<pre><code class="hljs" style="word-wrap: break-word;">var xhttp = new XMLHttpRequest();</code></pre>
+
+				</section>
+
+
+				
+				<!-- XMLHttpRequest - Objekt Metoder -->
+				<section>
+					<section>
+						<h3>XMLHttpRequest - Objekt Metoder</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>Metod</th>
+									<th>Beskrivning</th>
+								</tr>
+							</thead>
+							<tbody style="font-size: 30px;">
+								<tr>
+									<td>new XMLHttpRequest()</td>
+									<td>Skapar ett nytt XMLHttpRequest-objekt</td>
+								</tr>
+								<tr>
+									<td>abort()</td>
+									<td>Avbryter nuvarande begäran</td>
+								</tr>
+								<tr>
+									<td>getAllResponseHeaders()</td>
+									<td>Returnerar huvudinformation</td>
+								</tr>
+								<tr>
+									<td>getResponseHeader()</td>
+									<td>Returnerar specifik huvudinformation</td>
+								</tr>
+								<tr>
+									<td>setRequestHeader()</td>
+									<td>Lägger till en etikett / värde för rubriken som ska skickas</td>
+								</tr>
+								<tr>
+									<td>send()</td>
+									<td>Skickar begäran till servern, används för GET</td>
+
+								</tr>
+								<tr>
+									<td>send(string)</td>
+									<td>Skickar begäran till servern, används för POST</td>
+
+								</tr>
+							</tbody>
+						</table>
+
+					</section>
+					<section>
+						<table>
+							<thead>
+								<tr>
+									<th>Metod</th>
+									<th>Beskrivning</th>
+								</tr>
+							</thead>
+							<tbody style="font-size: 30px;">
+								<tr>
+									<td>open(method, url, async, user, psw)</td>
+									<td>
+										method: GET eller POST<br>
+										url: webbadres, serverns (fil) plats<br>
+										async: true, false <br>
+										user: valfritt användarnamn<br>
+										psw: valfritt lösenord<br>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					
+					<!-- Method: GET eller POST -->
+					<section>
+							<h3>URL, HTTP, GET och POST</h3>
+							<p >
+								<ul style="font-size: 33px;">
+									<li>URL url-parametern i open () - metoden är en adress till en fil på en server, filen kan vara som .txt och .xml eller serverns skriptfiler som .asp och .php.</li>
+									<li>HTTP HTTP = HyperText Transfer Protocol, metoden som används när webbläsaren skickar och tar emot information från nätet.</li>
+									<li>GET används när vi klickar på länkar eller skriver in en URL i adressfältet. Webbläsaren skickar en förfrågan till URL:en i <span style="color:red;">&lt;a&gt;</span> taggen som vi klickade på och webbservern skickar tillbaka ett svar.</li>
+									<li>POST används när vi har ett formulär och klickar på den knapp som är av typen submit. Webbläsaren skickar en förfrågan till URL:en som anges i <span style="color:red;">&lt;form&gt;</span> taggen och webbservern skickar tillbaka ett svar. En POST-förfrågan innehåller också de värden som finns i alla formulärelement.</li>
+								</ul>
+							</p>
+					</section>
+
+					<section data-markdown>
+							<script type="text/template">
+								### Skicka en request  till en server
+
+								För att skicka en förfrågan till en server använder vi metoderna Open () och send () för XMLHttpRequest:
+
+								```
+								  xhttp.open("method", "url", async);
+								  xhttp.send();
+								
+								```
+							</script>
+							
+					</section>
+				</section>
+
+				
+				<!-- Egenskaper för XMLHttpRequest-objektet -->
+				<section>
+					<section>
+						<h3>Egenskaper för XMLHttpRequest-objektet</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>Egenskap</th>
+									<th>Beskrivning</th>
+								</tr>
+							</thead>
+							<tbody style="font-size: 30px;">
+								<tr>
+									<td>onreadystatechange</td>
+									<td>funktion som anropas bland annat när webbservern skickar ett svar</td>
+								</tr>
+								<tr>
+									<td>readyState</td>
+									<td>readyState == 0 begäran inte initialiserad <br>
+										readyState == 1 serverns anslutning etablerad <br>
+										readyState == 2 förfrågan mottagen <br>
+										readyState == 3 bearbetnings förfrågan <br>
+										readyState == 4 förfrågan är klar och svaret är klart "servern har svarat"
+									</td>
+								</tr>
+								<tr>
+									<td>responseText</td>
+									<td>returnerar svarsdata som en sträng</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<table>
+							<thead>
+								<tr>
+									<th>Egenskap</th>
+									<th>Beskrivning</th>
+								</tr>
+							</thead>
+							<tbody style="font-size: 30px;">
+								<tr>
+									<td>responseXML</td>
+									<td>returnerar svarsdata som XML-data</td>
+								</tr>
+								<tr>
+									<td>status</td>
+									<td>status == 200 "ok" <br>
+									status == 403 "Forbidden" <br>
+									status == 404 "Not Found" <br>
+									</td>
+								</tr>
+								<tr>
+									<td>statusText</td>
+									<td>returnerar status texten (t.ex. "OK" eller "Not Found") </td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</section>
+					<section>
+						<h3>Ajax exempel</h3>
+						<p>
+						<pre><code class="hljs" style="word-wrap: break-wor;">
+''' html-page
+				
+<div id="demo">
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", URL, true);
+  xhttp.send();
+}
+</script>
+						
+						</code></pre>
+						</p>
+					</section>
+				</section>
+
+				
+							
+			<!--Ett komplett exempel-->
+			<section>
+				<section>
+				<h2>Ett komplett exempel</h2>
+				<p style="font-size: 26px;" class="p1">
+					Vi ska göra en sida som anropar en speciell servlet, ett litet serverprogram, som vi också ska skriva. Vår servlet blir mycket enkel. Den enda gör att skicka tillbaka bokstäverna i en sträng i omvänd ordning så att "aron" blir "nora" till exempel.<br>
+					Man börja med att skriva en hanteringsfunktion som ska anropas när ett anrop är klart. Själva anropet till serven hanteras av en klass som ingår i JavaScript och heter XMLHttpRequest. Man skapar först en instans av klassen (ett objekt) och ger den en referns till hanteringsfunktionen. Därefter anger man HTTP-metod, till exempel "GET" och en URL, och sedan är det bara att anropa metoden send().<br>
+					Klassen XMLHttReequest tar hand om all detaljer som rör själva anropet till servern. När svaret har kommit tillbaka anropas din hanteringsfunktionen, och där kan du sedan göra vad du vill med svaret. Hanteringsfunktionen anropas också om det blir något fel, till exempel om serven inte hittas,  om servern skickar tillbacka ett felmeddelande eller om det inte kommer något svar alls inom en rimlig tid.
+				</p>
+				</section>
+					
+				<section>
+						<h6>Dags för ett exempel! Vi börjar med HTML- sidan:</h6>
+						<pre><code class="hljs" data-trim contenteditable>
+							<!doctype html>
+							<html>
+							<head>
+							<meta charset="utf-8"/>
+							<title>Ajax-exempel</title>
+							<script type="text/javascript"></script>
+							<body>
+								<h1>Ajax</h1>
+								<form>
+									<p>
+										<label for="indata">Skriv text här:</label>
+										<input type="text" id="indata" onkeyup="ajax()"/>
+										<p>
+											Texten baklänges är <span id="utdata"></span>
+										</p>
+									</p>
+								</form>
+							</body>
+							</head>
+							</html>
+					   </code></pre>
+				</section>
+				<section>
+					<p style="font-size: 26px;" class="p1">
+						Vi har ett formulär som innehåller ett textfält med onkeyup="ajax()". Det betyder att varje gång användaren släpper upp en tangent efter att ha skrivit något i fältet så kommer JavaScript-funktionen ajax() att anropas. Sedan har vi en tom <span style="color:red;">&lt;span&gt;</span> tagg med id="utdata". Den ska så småningom bli fylld med text, är det tänkt. <br>
+						Nästa steg är att skriva funktionen ajax(). Den ser ut så här:
+						<pre><code class="hljs" data-trim contenteditable>
+							var klient;
+							function ajax() {
+							 Klient = new XMLHttpRequest();
+							 klient . onreadystatechange = hanterare;
+							 klient . open ("GET", "ajaxservlet?indata=" + document . forms['formularet'] . indata . value);
+							 klient . send(null);
+							}
+					   </code></pre>
+					</p>
+				</section>
+				<section>
+					<p style="font-size: 26px;" class="p1">
+						Först deklarerar vi en variabel med namnet klient. Det är den som kommer att innehålla XMLHttpRequest-objekt, och vi deklarerar den utanför funktionen så att alla JavaScript-funktioner på sidan kan använda den. <br>
+						Själva funktionen ajax() skapar först en ny instans av XMLHttpRequest och sparar den i variabeln klient. Sedan sparas en referens till funktionen hanterare i instansen. Därefter anger funktionen att Http-metoden GET ska användas och vilken URL som ska hämtas. Den URL vi skapar är precis likadan som om ett formulär hade skickas. Om användaren har skrivit "test" i textfältet blir URL:en.<br>
+						ajaxservlet?indata=test<br>
+						Den långa harangen efter plusteckenet i funktionen är det lättast att läsa bakifrån: hämta värdet på indata i formularet som är ett formulär i dokumentet.<br>
+						Sista i funktionen anropas klient . send() som skickar iväg anropet till servern. Sedan är det inget mer att göra här. Objektet klient tar hand om anropet.<br>
+						Det enda som återstår i HTML-dokumentet nu är funktionen hanterrare, den funtion som ska anropas är klart. Texten som kommer tillbaka i <span style="color:red;">&lt;span&gt;</span> taggen lägger man så här:
+						<pre><code class="hljs" data-trim contenteditable>
+							function hanterare(){
+							document.getElementById("utdata") . innerHTML = klient . responseText;
+							}
+					   </code></pre>
+					</p>
+				</section>
+				<section>
+					<h6>Nu är vi klara med HTML-dokumentet. Så här ser den kompletta filen ut:</h6>
+						<pre><code class="hljs" data-trim contenteditable>
+							<!doctype html>
+							<html>
+							<head>
+							<meta charset="utf-8"/>
+							<title>Ajax-exempel</title>
+							<script type="text/javascript">
+								var klient;
+								function ajax() {
+								 Klient = new XMLHttpRequest();
+								 klient . onreadystatechange = hanterare;
+								 klient . open ("GET", "ajaxservlet?indata=" + document . forms['formularet'] . indata . value);
+								 klient . send(null);
+								}
+								function hanterare(){
+									document.getElementById("utdata") . innerHTML = klient . responseText;
+								}
+							</script>
+							<body>
+								<h1>Ajax</h1>
+								<form>
+									<p>
+										<label for="indata">Skriv text här:</label>
+										<input type="text" id="indata" onkeyup="ajax()"/>
+										<p>
+											Texten baklänges är <span id="utdata"></span>
+										</p>
+									</p>
+								</form>
+							</body>
+							</head>
+							</html>
+					   </code></pre>
+				</section>
+				<section>
+					<p style="font-size: 26px;" class="p1">
+						NU behöver vi en serlet också, det finns många olikaspråk som man kan skriva servertillämpningar i. Några av de vanligaste är JSP, ASP, PHP, Python och Ruby. Men på den här exempel , vi använder Tomcat för att köra servleten. Tomcat är en liten applikationsserver som ger möjlighet att köra java-servlets och JSP-sidor. Programmet har öppen källkod och fungerar mycket bra under både Linux, Mac OS och Windows. <br> Först skriver vi en servletklass:
+						<pre><code class="hljs" data-trim contenteditable>
+							package se . pagina;
+							import org . apache . commons .lang . stringUtils;
+							
+							import javax.servlet.*;
+							import java . io . IOException;
+							import java . io Write;
+							
+							public class Ajaxservlet extends HttpServlet {
+								public void doGet (HttpServletRequest anrop, HttpServletResponse svar)
+									throws ServletException, IOException {
+									String indata = anrop . getParameter ("indata");
+									svar . addHeader("COntent - Type", "text/plain; charset = UTF-8");
+									Write skrivre = svar . getWriter();
+									skrivare . write(Stringutils . severse(indata));
+									}
+							}
+					   </code></pre>
+					</p>
+				</section>
+				<section>
+					
+					<p style="font-size: 26px;" class="p1">
+						Först kommer några rader som berättar vad klassen har för paket (ungefär som en sökväg) och vilka andra klasser som används så kommer själva klassdeklaratinen. Vi skapar klassen Ajaxservlet som är en utökning av httpServlet, en klass som ingår i java. Vår klass innehåller bara en enda metod, doGt(). <br>
+						När Tomcat får ett anrop från en webbläsare sätter programmet ihop två objkt, tt med alla uppgifter om anropet (det som vi kallar anrop här) och ett som är förberett för att ta emot utdata från vår servlet (objektet svar). <br>
+						Vår metod börjar med att hämta parametern indata från anropet (den parameter som vi skickade från JavScript-funktionen ajax()). Sedan anger metoden att svaret kommer att vara vanlig text med teckentabellen UTF-8. Därpå hämtar doGet() ett hjälpobjekt, skrivare, från svaret. Allt som metoden matar in i skrivare kommer att skickas tiibaka till webbläsaren. Det enda vi matar in är den bakvända parametern indata.<br>
+						Vi har nu hela kedjan. Först ett texfält med ett onkeyup() - attribut, sedan en javaScript-funktion (ajax()) som skickar iväg ett anrop, en servlet som tar emot anropet och skickar tillbaka ett svar och till sist en annan JavaScript-funktion (hanterare()) som visar svaret för användaren.
+					</p>
+				</section>
+			</section>
+
+
+			<!--Ajax utan serverprogram-->
+			<section>
+				<section>
+				<h2>Ajax utan serverprogram</h2>
+				<p style="font-size: 26px;" class="p1">
+					Man behöver faktiskt inte ha någon servelt för att kunna använda Ajax. Man kan till lexempel göra en <span style="color:red;">&lt;div&gt;</span> som fylls me olika HTML-fragment beroende på vilken knapp håller musen över. Vi ska göra en sådan sida med flikar högest upp och en <span style="color:red;">&lt;div&gt;</span> som visar olika innehåll beroende på vilken flik man håller musen ovanför. <br>
+					Alla dom här varianterna går att åstakomma med enbart HTML och JavaScript-funktioner. Skriptet får helt enkelt hämta en bildfil eller ett html-dokument i stället för att anropa en servelt. Så här:
+					
+					<pre><code class="hljs" data-trim contenteditable>
+							function ajax(filurl) {
+							 Klient = new XMLHttpRequest();
+							 klient . onreadystatechange = hanterare;
+							 klient . open ("GET", filurl);
+							 klient . send(null);
+							}
+					   </code></pre>
+				</p>
+				</section>
+					
+				<section>
+					<p style="font-size: 26px;" class="p1">
+						Föt flikexemplet kan du till exempel anropa funktionen såhär:
+						<pre><code class="hljs" data-trim contenteditable>
+							<p class="flik" onclick="ajax('kontakt.html')"/> Kontakta oss </p>
+					   </code></pre>
+                    </p>
+                    <p style="font-size: 26px;" class="p1">
+						Sedan behöver du bara ett element me id="utdata", gärna med en fast storlek och diskret ram, så är det klart! Så här, till exempel: 
+						
+						<pre><code class="hljs" data-trim contenteditable>
+							<!doctype html>
+							<html>
+							<head>
+							<meta charset="utf-8"/>
+							<title>Ajax-exempel</title>
+							<script type="text/javascript">
+								var klient;
+								function ajax(filurl) {
+								 Klient = new XMLHttpRequest();
+								 klient . onreadystatechange = hanterare;
+								 klient . open ("GET", filurl);
+								 klient . send(null);
+								}
+								function hanterare(){
+									document.getElementById("utdata") . innerHTML = klient . responseText;
+								}
+							</script>
+							<style>
+								div#utdata {
+									clear: left;
+									background-color: #eee;
+									border: 1px solid silver;
+									margin-top: 0px;
+									height: 100px;
+									width: 300px;
+									overflow: auto;
+								}
+								a.flik{
+									float: left;
+									border: inset silver;
+									border-width: 3px 3px 0px 0px;
+									padding: 5px;
+									margin: 0px 2px 0px 0px;
+								}
+								a.flik:hover {
+									background: silver;
+									cursor: pointer;
+								}
+							</style>
+							<body>
+								<h1>Ajax utan server</h1>
+								<a class="flik" onmouseover="ajax('nyheter.html')">Nyheter</a>
+								<a class="flik" onmouseover="ajax('produkter.html')">Produkter</a>
+								<a class="flik" onmouseover="ajax('kontakt.html')">Kontakt oss</a>
+								<div id="utdata">För markören över en flik!</div>
+							</body>
+							</head>
+							</html>
+					   </code></pre>
+                    </p>
+                    
+				</section>
+				<section>
+					<p style="font-size: 26px;" class="p1">
+						Här har vi först de två funktionerna i JavaScript, sedan några formatmallar. <br>
+						Själva <span style="color:red;">&lt;body&gt;</span>-delen innehåller bara en rubrik, tre länkar med onmouseover och den <span style="color:red;">&lt;div&gt;</span> som ska ta emot innehåll från ajax-anropa. onmoouseover-atrributen hänvisar till tre olika filer med HTML-fragment (de behöver ju inte vara komplette HTML-dokument eftersom deras innehåll stoppas in på en befintlig sida som redan har sidhuvud med mera). Vi gjorde extremt korta filer för att hålla exempelt någorlunda överskådligt. Här är nyhetr.html:
+						
+						<pre><code class="hljs" data-trim contenteditable>
+						<h3>Nyheter</h3>
+						<p>Här händer det grjor!</p>
+						</code></pre>
+					  </p>
+					<p style="font-size: 26px;" class="p1">
+						Här är produkter.html:
+						<pre><code class="hljs" data-trim contenteditable>
+						<h3>Produkter</h3>
+						<p>Här är våra produkter:</p>
+						</code></pre>
+					</p>
+					<p style="font-size: 26px;" class="p1">
+						Här är kontakt.html:
+						<pre><code class="hljs" data-trim contenteditable>
+						<h3>Kontakt</h3>
+						<p>Så här får du tag i oss:</p>
+						</code></pre>
+					</p>
+
+				</section>
+				<section>
+					<p style="font-size: 26px;" class="p1">
+						På den här exempel använde onmouseovar för att det skulle kännas lite extra "dynamiskt". Det räcker med att dra muspekaren fram och tillbaka över flikraden så byts innehållet <span style="color:red;">&lt;div&gt;</span>-element ut. På en riktig webbplats skulle jag ha använt onclick i stället. <br>
+						Här har vi alltså ett tvättäka Ajax-exempel som inte kräver någon serverprogrammering alls, och bara tiotal rader JavaScript. 
+					</p>
+				</section>
+			</section>
+
+
+			<!-- ÖVNINGAR -->
+			<section>
+				<h2>ÖVNINGAR</h2>
+				<ol>
+					<li><a href="https://www.w3schools.com/js/js_ajax_examples.asp">Prova själv - Ajax exempel</a></li>
+					<li><a href="https://github.com/zeena83/AJAX-PRESENTATION/blob/master/README.md">Övningar</a></li>
+				</ol>
+
+			</section>
+
+
+			<!-- RESURSER -->
+			<section>
+				<h2>RESURSER</h2>
+				<ul>
+					<li><a href="https://www.w3schools.com/js/js_ajax_intro.asp">https://www.w3schools.com/js/js_ajax_intro.asp</a>.</li>
+					<li><a href="https://docs.google.com/presentation/d/14FQS6z6xzkWrgNzT2wydDm_o3YOOCe7Q80DkdEHjZwk/edit#slide=id.g1941814058_0_69">https://docs.google.com/presentation</a>.</li>
+					<li>HTML OCH CSS - boken. Sjunde upplagan , av Rolf Staflin </li>
+				</ul>
+
+			</section>
+
+				
+			<!-- Transition Styles -->
+				
+			<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+
+			</section>
+
+				
+			<!-- Themes -->
+			<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+			</section>
+				
+
+
+			<!-- Slut -->
+			<section>
+					<h1>Slut!</h1>
+			</section>
+			<p><img src="IMG/images.png" style="border-style:none; border-radius: 100px; position: relative; left:620px; bottom:-593px;"  class="img-circle" alt="Cinque Terre" width="80" height="80"></p>
+
+
+			</div>
+
+		</div>
+
+		<!---------------------------------->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
